@@ -180,6 +180,20 @@
     <script src="script.js"></script>
     <!-- PWA Manifest Link -->
 <link rel="manifest" href="manifest.json">
+<!-- Register Service Worker for PWA Installability -->
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => {
+                    console.log('SW registered: ', registration);
+                })
+                .catch(registrationError => {
+                    console.log('SW registration failed: ', registrationError);
+                });
+        });
+    }
+</script>
 <meta name="theme-color" content="#2A7F7F">
 </body>
 </html>
