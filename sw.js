@@ -12,7 +12,7 @@ self.addEventListener('install', (event) => {
                 '/index.html',
                 '/style.css',
                 '/script.js',
-                '/logo.png',
+                '/Gemini_Generated_Image_ovry6kovry6kovry-removebg-preview.png',
                 '/manifest.json'
             ]);
         })
