@@ -1,0 +1,312 @@
+/* =========================================
+   1. VARIABLES & RESET (The Foundation)
+   ========================================= */
+:root {
+    --bg-main: #FAFBFB;             /* Very light, clean off-white background */
+    --bg-card: #FFFFFF;             /* Pure white for cards and sidebar */
+    --text-dark: #2D2D2D;           /* Dark gray for main text */
+    --text-light: #6B7B7B;          /* Muted teal-gray for secondary text */
+    --accent-teal: #2A7F7F;         /* Main teal brand color */
+    --accent-green: #4A8B5C;        /* Palm tree green for focus/success */
+    --accent-gold: #D4A373;         /* Warm gold for highlights and timer ring */
+    --accent-light-teal: #5BA4A4;   /* Lighter teal for water/highlights */
+    --shadow: 0 8px 30px rgba(42, 127, 127, 0.08); /* Soft teal-tinted drop shadow */
+    --danger: #d9534f;              /* Red color for the danger zone button */
+}
+
+/* Global Reset */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+}
+
+body { 
+    background-color: var(--bg-main); 
+    color: var(--text-dark); 
+    display: flex; 
+    min-height: 100vh; 
+}
+
+/* =========================================
+   2. SIDEBAR STYLES
+   ========================================= */
+.sidebar { 
+    width: 240px; 
+    background: var(--bg-card); 
+    padding: 2rem; 
+    display: flex; 
+    flex-direction: column; 
+    border-right: 1px solid rgba(42, 127, 127, 0.08); 
+    position: fixed; 
+    height: 100vh; 
+}
+
+.logo { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    margin-bottom: 3rem; 
+}
+
+.logo img { 
+    width: 190px; 
+    height: 190px; 
+    object-fit: cover; 
+}
+
+.logo span { 
+    font-size: 1.6rem; 
+    font-weight: 700; 
+    color: var(--accent-teal); 
+    letter-spacing: 1px; 
+}
+
+.nav-links { 
+    list-style: none; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 0.5rem; 
+}
+
+.nav-links li { 
+    padding: 12px 16px; 
+    border-radius: 12px; 
+    cursor: pointer; 
+    transition: all 0.2s ease; 
+    font-weight: 500; 
+    color: var(--text-light); 
+}
+
+.nav-links li.active, .nav-links li:hover { 
+    background: rgba(42, 127, 127, 0.08); 
+    color: var(--accent-teal); 
+}
+
+/* =========================================
+   3. MAIN CONTENT & LAYOUT
+   ========================================= */
+.main-content { 
+    flex: 1; 
+    margin-left: 240px; 
+    padding: 2.5rem; 
+    overflow-y: auto; 
+}
+
+.header { margin-bottom: 2.5rem; }
+.header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-dark); }
+.header p { color: var(--text-light); }
+
+.stats-row { 
+    display: flex; 
+    gap: 1.5rem; 
+    margin-bottom: 2.5rem; 
+}
+
+.stat-card { 
+    background: var(--bg-card); 
+    padding: 1.5rem; 
+    border-radius: 20px; 
+    box-shadow: var(--shadow); 
+    flex: 1; 
+    display: flex; 
+    align-items: center; 
+    gap: 1rem; 
+    transition: transform 0.2s ease; 
+}
+
+.stat-card:hover { transform: translateY(-3px); }
+
+.stat-icon { 
+    width: 45px; height: 45px; 
+    border-radius: 12px; 
+    display: flex; align-items: center; justify-content: center; 
+    font-size: 1.2rem; 
+}
+
+.icon-fire { background: rgba(212, 163, 115, 0.15); color: var(--accent-gold); }
+.icon-water { background: rgba(91, 164, 164, 0.15); color: var(--accent-light-teal); }
+.icon-time { background: rgba(74, 139, 92, 0.15); color: var(--accent-green); }
+
+.stat-info h3 { font-size: 1.2rem; margin-bottom: 2px; color: var(--text-dark); }
+.stat-info p { font-size: 0.85rem; color: var(--text-light); }
+
+.dashboard-grid { 
+    display: grid; 
+    grid-template-columns: 1.5fr 1fr; 
+    gap: 1.5rem; 
+}
+
+.card { 
+    background: var(--bg-card); 
+    padding: 2rem; 
+    border-radius: 24px; 
+    box-shadow: var(--shadow); 
+}
+
+.card-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 2rem; 
+}
+
+.card-header h2 { font-size: 1.2rem; color: var(--text-dark); }
+
+/* =========================================
+   4. WATER TRACKER UI
+   ========================================= */
+.water-visual { display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem; }
+.water-amount { font-size: 3rem; font-weight: 700; color: var(--accent-teal); }
+.water-amount span { font-size: 1rem; color: var(--text-light); font-weight: 400; }
+.water-controls { display: flex; gap: 1rem; }
+
+.btn { 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 12px; 
+    font-weight: 600; 
+    cursor: pointer; 
+    transition: all 0.2s ease; 
+}
+
+.btn-primary { background: var(--accent-teal); color: white; }
+.btn-primary:hover { background: #1F6363; transform: scale(1.05); }
+
+.btn-outline { background: transparent; border: 2px solid rgba(42, 127, 127, 0.2); color: var(--text-dark); }
+.btn-outline:hover { border-color: var(--accent-teal); color: var(--accent-teal); }
+
+.btn-danger { background: var(--danger); color: white; }
+.btn-danger:hover { background: #c9302c; }
+
+.btn-lg { padding: 15px 30px; font-size: 1.1rem; }
+
+.progress-bar { 
+    width: 100%; height: 12px; 
+    background: rgba(42, 127, 127, 0.1); 
+    border-radius: 10px; 
+    overflow: hidden; 
+    margin-top: 1rem; 
+}
+
+.progress-fill { 
+    height: 100%; 
+    width: 0%; 
+    background: linear-gradient(90deg, var(--accent-light-teal), var(--accent-teal)); 
+    border-radius: 10px; 
+    transition: width 0.5s ease; 
+}
+
+/* =========================================
+   5. POMODORO TIMER UI
+   ========================================= */
+.timer-display { text-align: center; margin: 2rem 0; }
+
+.timer-circle { 
+    width: 180px; height: 180px; 
+    border-radius: 50%; 
+    border: 8px solid rgba(42, 127, 127, 0.1); 
+    border-top-color: var(--accent-gold); 
+    display: flex; flex-direction: column; 
+    align-items: center; justify-content: center; 
+    margin: 0 auto; 
+    box-shadow: inset 0 0 20px rgba(42, 127, 127, 0.05); 
+}
+
+.timer-time { font-size: 2.5rem; font-weight: 700; color: var(--text-dark); }
+.timer-label { color: var(--text-light); font-size: 0.9rem; margin-top: 5px; }
+.timer-controls { display: flex; justify-content: center; gap: 1rem; }
+
+/* =========================================
+   6. ANALYTICS CHART UI (REWORKED FOR PRO LOOK)
+   ========================================= */
+.chart-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-end; /* Aligns bars to the bottom baseline */
+    height: 300px; 
+    padding-bottom: 30px; /* Space for the day labels below the line */
+    border-bottom: 2px solid rgba(42, 127, 127, 0.1); 
+    position: relative;
+}
+
+.chart-bar-group { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: flex-end; /* Pushes the bar to the bottom */
+    height: 100%; 
+    flex: 1; 
+    position: relative;
+}
+
+.chart-bar { 
+    width: 35px; 
+    background: linear-gradient(to top, var(--accent-light-teal), var(--accent-teal)); 
+    border-radius: 6px 6px 0 0; 
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth, snappy animation */
+    min-height: 4px; 
+    position: relative;
+}
+
+/* Empty bar style for days with 0 water */
+.chart-bar.empty { 
+    background: rgba(42, 127, 127, 0.1); 
+} 
+
+/* The value floating above the bar */
+.chart-value { 
+    position: absolute; 
+    top: -25px; /* Floats 25px above the bar */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.85rem; 
+    color: var(--accent-teal); 
+    font-weight: 700; 
+    white-space: nowrap;
+}
+
+/* The day label below the baseline */
+.chart-label { 
+    position: absolute; 
+    bottom: -25px; /* Floats 25px below the baseline */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.85rem; 
+    color: var(--text-light); 
+    font-weight: 500; 
+}
+
+/* =========================================
+   7. SPA NAVIGATION & ANIMATIONS
+   ========================================= */
+.app-page { 
+    display: none; 
+    animation: fadeIn 0.3s ease; 
+}
+
+.app-page.active-page { 
+    display: block; 
+}
+
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(10px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+/* =========================================
+   8. SETTINGS INPUT STYLES
+   ========================================= */
+input[type="text"], input[type="number"] { 
+    padding: 10px; 
+    border-radius: 8px; 
+    border: 1px solid rgba(42, 127, 127, 0.2); 
+    font-size: 1rem; 
+    outline: none; 
+    transition: border-color 0.2s ease; 
+}
+
+input[type="text"]:focus, input[type="number"]:focus { 
+    border-color: var(--accent-teal); 
+}
