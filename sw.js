@@ -1,6 +1,4 @@
 // sw.js - This is your Service Worker
-// It tells the browser this is a Progressive Web App (PWA)
-
 const CACHE_NAME = 'oasis-v1';
 
 // Install event: Cache the essential files
@@ -12,7 +10,8 @@ self.addEventListener('install', (event) => {
                 '/index.html',
                 '/style.css',
                 '/script.js',
-                '/Gemini_Generated_Image_ovry6kovry6kovry-removebg-preview.png',
+                '/logo.png',          // <-- FIXED: Matches your HTML
+                '/logo.png',      // <-- ADDED: Required for Chrome install
                 '/manifest.json'
             ]);
         })
